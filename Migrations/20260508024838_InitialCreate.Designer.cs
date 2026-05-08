@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CIDM_3315_Final_Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260507005357_InitialCreate")]
+    [Migration("20260508024838_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -39,10 +39,10 @@ namespace CIDM_3315_Final_Project.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("RarityID")
+                    b.Property<int?>("RarityID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("TypeID")
+                    b.Property<int?>("TypeID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ItemID");
@@ -102,21 +102,13 @@ namespace CIDM_3315_Final_Project.Migrations
 
             modelBuilder.Entity("CIDM_3315_Final_Project.Models.Item", b =>
                 {
-                    b.HasOne("CIDM_3315_Final_Project.Models.Rarity", "Rarity")
+                    b.HasOne("CIDM_3315_Final_Project.Models.Rarity", null)
                         .WithMany("Items")
-                        .HasForeignKey("RarityID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RarityID");
 
-                    b.HasOne("CIDM_3315_Final_Project.Models.Type", "Type")
+                    b.HasOne("CIDM_3315_Final_Project.Models.Type", null)
                         .WithMany("Items")
-                        .HasForeignKey("TypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Rarity");
-
-                    b.Navigation("Type");
+                        .HasForeignKey("TypeID");
                 });
 
             modelBuilder.Entity("CIDM_3315_Final_Project.Models.Rarity", b =>

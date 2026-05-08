@@ -11,6 +11,6 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<Item> Items {get; set;}
-    public DbSet<Type> Type {get; set;}
-    public DbSet<Rarity> Rarity {get; set;}
+/*     public DbSet<Type> Type {get; set;}
+    public DbSet<Rarity> Rarity {get; set;} */
 }

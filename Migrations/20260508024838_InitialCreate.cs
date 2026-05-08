@@ -49,8 +49,8 @@ namespace CIDM_3315_Final_Project.Migrations
                     Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 120, nullable: false),
                     ImageURL = table.Column<string>(type: "TEXT", nullable: false),
-                    TypeID = table.Column<int>(type: "INTEGER", nullable: false),
-                    RarityID = table.Column<int>(type: "INTEGER", nullable: false)
+                    RarityID = table.Column<int>(type: "INTEGER", nullable: true),
+                    TypeID = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,14 +59,12 @@ namespace CIDM_3315_Final_Project.Migrations
                         name: "FK_Items_Rarity_RarityID",
                         column: x => x.RarityID,
                         principalTable: "Rarity",
-                        principalColumn: "RarityID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "RarityID");
                     table.ForeignKey(
                         name: "FK_Items_Type_TypeID",
                         column: x => x.TypeID,
                         principalTable: "Type",
-                        principalColumn: "TypeID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "TypeID");
                 });
 
             migrationBuilder.CreateIndex(

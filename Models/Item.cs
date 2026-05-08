@@ -10,8 +10,10 @@ public class Item
     [StringLength(120, MinimumLength = 3)]
     public string Description {get; set;} = string.Empty;
     public string ImageURL {get; set;} = string.Empty;
-    public int TypeID {get; set;} //Foreign Key
+
+    //All of this was causing a problem when trying to seed the data
+/*     public int TypeID {get; set;} //Foreign Key
     public int RarityID {get; set;} //Foreign Key
     public Type Type {get; set;} = default!; // Navigation Property to Type
-    public Rarity Rarity {get; set;} = default!; // Navigation Property to Rarity
+    public Rarity Rarity {get; set;} = default!; // Navigation Property to Rarity */
 }
