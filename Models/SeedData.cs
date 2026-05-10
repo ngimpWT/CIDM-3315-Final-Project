@@ -314,16 +314,5 @@ public static class SeedData
 
         context.SaveChanges();
 
-        //Add a Type
-
-
-/*         // Add a movie review for inside out 2
-        Review InsideOutReview = new Review {
-            Score = 5,
-            ReviewText = "Inside Out 2 is a brilliantly crafted sequel that delves deeper into the emotional landscape of adolescence. The film masterfully balances humor and heart, introducing new emotions like Anxiety, Envy, and Embarrassment, which complicate Riley's journey through high school. The interactions between old and new emotions provide a fresh, insightful look at the tumultuous nature of growing up. With stunning animation, a compelling storyline, and a pitch-perfect voice cast, Inside Out 2 is a powerful exploration of self-identity and the complexities of teenage life.",
-            Movie = context.Movies.Where(m => m.Title == "Inside Out 2").Single()
-        };
-        context.Add(InsideOutReview);
-        context.SaveChanges(); */
     }
 }

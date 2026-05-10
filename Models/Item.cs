@@ -15,7 +15,7 @@ public class Item
 
 
     public int TypeID {get; set;} //Foreign Key
-    public Type Type {get; set;} = default!; // Navigation Property to Type
+    public Type? Type {get; set;} = default!; // Navigation Property to Type
     public int RarityID {get; set;} //Foreign Key
-    public Rarity Rarity {get; set;} = default!; // Navigation Property to Rarity
+    public Rarity? Rarity {get; set;} = default!; // Navigation Property to Rarity
 }
