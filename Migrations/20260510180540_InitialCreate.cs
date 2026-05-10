@@ -11,33 +11,29 @@ namespace CIDM_3315_Final_Project.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Rarity",
+                name: "Rarities",
                 columns: table => new
                 {
                     RarityID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
-                    ItemID = table.Column<int>(type: "INTEGER", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rarity", x => x.RarityID);
+                    table.PrimaryKey("PK_Rarities", x => x.RarityID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Type",
+                name: "Types",
                 columns: table => new
                 {
                     TypeID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
-                    ImageURL = table.Column<string>(type: "TEXT", nullable: false),
-                    ItemID = table.Column<int>(type: "INTEGER", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Type", x => x.TypeID);
+                    table.PrimaryKey("PK_Types", x => x.TypeID);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,22 +45,24 @@ namespace CIDM_3315_Final_Project.Migrations
                     Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 120, nullable: false),
                     ImageURL = table.Column<string>(type: "TEXT", nullable: false),
-                    RarityID = table.Column<int>(type: "INTEGER", nullable: true),
-                    TypeID = table.Column<int>(type: "INTEGER", nullable: true)
+                    TypeID = table.Column<int>(type: "INTEGER", nullable: false),
+                    RarityID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Items", x => x.ItemID);
                     table.ForeignKey(
-                        name: "FK_Items_Rarity_RarityID",
+                        name: "FK_Items_Rarities_RarityID",
                         column: x => x.RarityID,
-                        principalTable: "Rarity",
-                        principalColumn: "RarityID");
+                        principalTable: "Rarities",
+                        principalColumn: "RarityID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Items_Type_TypeID",
+                        name: "FK_Items_Types_TypeID",
                         column: x => x.TypeID,
-                        principalTable: "Type",
-                        principalColumn: "TypeID");
+                        principalTable: "Types",
+                        principalColumn: "TypeID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -85,10 +83,10 @@ namespace CIDM_3315_Final_Project.Migrations
                 name: "Items");
 
             migrationBuilder.DropTable(
-                name: "Rarity");
+                name: "Rarities");
 
             migrationBuilder.DropTable(
-                name: "Type");
+                name: "Types");
         }
     }
 }

@@ -36,10 +36,10 @@ namespace CIDM_3315_Final_Project.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("RarityID")
+                    b.Property<int>("RarityID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TypeID")
+                    b.Property<int>("TypeID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ItemID");
@@ -57,9 +57,6 @@ namespace CIDM_3315_Final_Project.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ItemID")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
@@ -67,24 +64,13 @@ namespace CIDM_3315_Final_Project.Migrations
 
                     b.HasKey("RarityID");
 
-                    b.ToTable("Rarity");
+                    b.ToTable("Rarities");
                 });
 
             modelBuilder.Entity("CIDM_3315_Final_Project.Models.Type", b =>
                 {
                     b.Property<int>("TypeID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ImageURL")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ItemID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -94,18 +80,26 @@ namespace CIDM_3315_Final_Project.Migrations
 
                     b.HasKey("TypeID");
 
-                    b.ToTable("Type");
+                    b.ToTable("Types");
                 });
 
             modelBuilder.Entity("CIDM_3315_Final_Project.Models.Item", b =>
                 {
-                    b.HasOne("CIDM_3315_Final_Project.Models.Rarity", null)
+                    b.HasOne("CIDM_3315_Final_Project.Models.Rarity", "Rarity")
                         .WithMany("Items")
-                        .HasForeignKey("RarityID");
+                        .HasForeignKey("RarityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("CIDM_3315_Final_Project.Models.Type", null)
+                    b.HasOne("CIDM_3315_Final_Project.Models.Type", "Type")
                         .WithMany("Items")
-                        .HasForeignKey("TypeID");
+                        .HasForeignKey("TypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rarity");
+
+                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("CIDM_3315_Final_Project.Models.Rarity", b =>

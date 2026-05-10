@@ -13,50 +13,309 @@ public static class SeedData
         {
             return;
         }
+        //Remember to seed and SAVE Rarity and Type first
+
+        context.Types.AddRange(
+            new Type {Name = "Wonderous Item"},
+            new Type {Name = "Weapon"},
+            new Type {Name = "Ring"},
+            new Type {Name = "Staff"},
+            new Type {Name = "Scroll"},
+            new Type {Name = "Potion"},
+            new Type {Name = "Armor"}
+        );
+        //context.SaveChanges();
+
+        context.Rarities.AddRange(
+            new Rarity {Name = "Common"},
+            new Rarity {Name = "Uncommon"},
+            new Rarity {Name = "Rare"},
+            new Rarity {Name = "Very Rare"},
+            new Rarity {Name = "Legendary"},
+            new Rarity {Name = "Artifact"}
+        );
+        context.SaveChanges();
 
         context.Items.AddRange(
-            new Item { Name = "Cape of Billowing", ImageURL = "img/cloakOfBillowing.jpeg", Description = "While wearing this cloak, you can use a bonus action to make it billow dramatically." },
-            new Item { Name = "Immovable Rod", ImageURL = "img/immovableRod.jpeg", Description = "This flat iron rod has a button on one end. You can use an action to press the button, which causes the rod to become magically fixed in place. Until you or another creature uses an action to push the button again, the rod doesn't move, even if it is defying gravity. The rod can hold up to 8,000 pounds of weight. More weight causes the rod to deactivate and fall. A creature can use an action to make a DC 30 Strength check, moving the fixed rod up to 10 feet on a success." },
-            new Item { Name = "Alchemy Jug", ImageURL = "img/alchemyJug.jpeg", Description = "You can use an action and name one liquid from the table below to cause the jug to produce the chosen liquid. Afterward, you can uncork the jug as an action and pour that liquid out, up to 2 gallons per minute. The maximum amount of liquid the jug can produce depends on the liquid you named." },
-            new Item { Name = "Hat of Disguise", ImageURL = "img/hatOfDisguise.jpeg", Description = "While wearing this hat, you can cast the Disguise Self spell. The spell ends if the hat is removed." },
-            new Item { Name = "Robe of Useful Items", ImageURL = "img/robeOfUsefulItems.jpeg", Description = "This robe has cloth patches of various shapes and colors covering it. While wearing the robe. you can use an action to detach one of the patches, causing it to become the object or creature it represents. Once the last patch is removed, the robe becomes an ordinary garment." },
-            new Item { Name = "Boots of Elvenkind", ImageURL = "img/bootsOfElvenkind.jpeg", Description = "While you wear these boots, your steps make no sound, regardless of the surface you are moving across. You also have advantage on Dexterity (Stealth) checks that rely on moving silently." },
-            new Item { Name = "Amulet of Health", ImageURL = "img/amuletOfHealth.jpeg", Description = "Your Constitution score is 19 while you wear this amulet. It has no effect on you if your Constitution score is already 19 or higher." },
-            new Item { Name = "Belt of Dwarvenkind", ImageURL = "img/beltOfDwarvenkind.jpeg", Description = "Your Constitution score increases by 2, to a maximum of 20. You have advantage on Charisma (Persuasion) checks made to interact with dwarves.In addition, while attuned to the belt, you have a 50 percent chance each day at dawn of growing a full beard if you're capable of growing one, or a visibly thicker beard if you already have one. If you aren't a dwarf, you gain the following additional benefits while wearing the belt: You have advantage on saving throws against poison, and you have resistance against poison damage. You have darkvision out to a range of 60 feet. You can speak, read, and write Dwarvish." },
-            new Item { Name = "Vorpal Sword", ImageURL = "img/vorpalSword.jpeg", Description = "You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage. When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra 6d8 slashing damage from the hit." },
-            new Item { Name = "Eye and Hand of Vecna", ImageURL = "img/eyeAndHandOfVecna.jpeg", Description = "To attune to the eye, you must gouge out your own eye and press the artifact into the empty socket. The eye grafts itself to your head and remains there until you die. Once in place, the eye transforms into a golden eye with a slit for a pupil, much like that of a cat. If the eye is ever removed, you die. To attune to the hand, you must lop off your left hand at the wrist and the press the artifact against the stump. The hand grafts itself to your arm and becomes a functioning appendage. If the hand is ever removed, you die. You gain a lot of cool and evil powers that are far too long to list here." },
-            new Item { Name = "Ring of Spell Storing", ImageURL = "img/ringOfSpellStoring.jpeg", Description = "You can store a spell in a ring." },
-            new Item { Name = "Bottle of Boundless Coffee", ImageURL = "img/bottleOfBoundlessCoffee.jpeg", Description = "This metal bottle carries delicious, warm coffee. The bottle comes with a stopper, which is attached to the bottle by a little chain. Even when open, the bottle won't accept any liquid other than the coffee it produces. The coffee inside is always comfortably warm, and none of the heat can be felt through the bottle. Each time you drink the coffee, roll a d20. On a 1, the bottle refuses to dispense coffee for the next hour. If you pour coffee from the bottle, rather than drinking from it, the coffee vanishes the moment it leaves the bottle." },
-            new Item { Name = "Portable Hole", ImageURL = "img/portableHole.jpeg", Description = "This fine black cloth, soft as silk, is folded up to the dimensions of a handkerchief. It unfolds into a circular sheet 6 feet in diameter. You can use an action to unfold a portable hole and place it on or against a solid surface, whereupon the portable hole creates an extradimensional hole 10 feet deep. The cylindrical space within the hole exists on a different plane, so it can't be used to create open passages. Any creature inside an open portable hole can exit the hole by climbing out of it." },
-            new Item { Name = "Bag of Holding", ImageURL = "img/bagOfHolding.jpeg", Description = "This bag has an interior space considerably larger than its outside dimensions, roughly 2 feet in diameter at the mouth and 4 feet deep. The bag can hold up to 500 pounds, not exceeding a volume of 64 cubic feet. The bag weighs 15 pounds, regardless of its contents. Retrieving an item from the bag requires an action." },
-            new Item { Name = "Staff of Power", ImageURL = "img/staffOfPower.jpeg", Description = "This staff has 20 charges and can be wielded as a magic Quarterstaff that grants a +2 bonus to attack rolls and damage rolls made with it. While holding it, you gain a +2 bonus to Armor Class, saving throws, and spell attack rolls. While holding the staff , you can cast one of the spells on the following table from it, using your spell save DC. The table indicates how many charges you must expend to cast the spell. Cone of Cold, Fireball, Globe of Invulnerability, Hold Monster, Levitate, Lightning Bolt, Magic Missile, Ray of Enfeeblement, Wall of Force." },
-            new Item { Name = "Sovereign Glue", ImageURL = "img/sovereignGlue.jpeg", Description = "This viscous, milky-white substance can form a permanent adhesive bond between any two objects. It must be stored in a jar or flask that has been coated inside with oil of slipperiness. When found, a container contains 1d6 + 1 ounces. One ounce of the glue can cover a 1-foot square surface. The glue takes 1 minute to set. Once it has done so, the bond it creates can be broken only by the application of universal solvent or oil of etherealness, or with a wish spell." },
-            new Item { Name = "Cabal's Ruin", ImageURL = "img/cabalsRuin.jpeg", Description = "This cloak is made of heavy dark cloth trimmed with golden patterns, and occasionally shimmers with sparks of arcane energy. It was once worn by the famed gunslinger Percival Fredrickstein von Musel Klossowski de Rolo III of Whitestone. You gain the following benefits: You have advantage on saving throws against spells and other magical effects while wearing this cloak. The cloak has 6 charges and it regains 1d4 + 2 expended charges daily at dawn. When you use the cloak to absorb a spell, you gain resistance to one type of damage dealt by the spell (your choice). This resistance then lasts until the end of your next turn." },
-            new Item { Name = "Titanstone Knuckles", ImageURL = "img/titanstoneKnuckles.jpeg", Description = "Carved from the heartstone of a slain earth primordial, these gauntlets bestow immeasurable might to their wearer. In recent times, they were wielded by the legendary barbarian Grog Strongjaw, who continues to use them as he seeks worthy challengers across Tal’Dorei and Exandria. they gain the following properties: Your Strength score becomes 26. While you are under the effect of the Enlarge/Reduce spell cast by the gauntlets, you have resistance to cold, fire, lightning, and thunder damage." },
-            new Item { Name = "Deck of Many Things", ImageURL = "img/deckOfManyThings.jpeg", Description = "Usually found in a box or pouch, this deck contains a number of cards made of ivory or vellum. Before you draw a card, you must declare how many cards you intend to draw and then draw them randomly (you can use an altered deck of playing cards to simulate the deck). Any cards drawn in excess of this number have no effect. Otherwise, as soon as you draw a card from the deck, its magic takes effect. You must draw each card no more than 1 hour after the previous draw. If you fail to draw the chosen number, the remaining number of cards fly from the deck on their own and take effect all at once. Once a card is drawn, it fades from existence. Unless the card is the Fool or the Jester, the card reappears in the deck, making it possible to draw the same card twice." },
-            new Item { Name = "Scroll of Tarrasque Summoning", ImageURL = "img/spellScroll.jpeg", Description = "Summons a Tarrasque." },
-            new Item { Name = "Sphere of Annihilation", ImageURL = "img/sphereOfAnnihilation.jpeg", Description = "This 2-foot-diameter black sphere is a hole in the multiverse, hovering in space and stabilized by a magical field surrounding it. The sphere obliterates all matter it passes through and all matter that passes through it. Artifacts are the exception. Unless an artifact is susceptible to damage from a sphere of annihilation, it passes through the sphere unscathed. Anything else that touches the sphere but isn't wholly engulfed and obliterated by it takes 4d10 force damage." },
-            new Item { Name = "Potion of Healing", ImageURL = "img/potionOfHealing.jpeg", Description = "This potion is a magic item. As a Bonus Action, you can drink it or administer it to another creature within 5 feet of yourself. The creature that drinks the magical red fluid in this vial regains 2d4 + 2 Hit Points." },
-            new Item { Name = "Armor of Invulnerability", ImageURL = "img/armorOfInvulnerability.jpeg", Description = "You have resistance to nonmagical damage while you wear this armor. Additionally, you can use an action to make yourself immune to nonmagical damage for 10 minutes or until you are no longer wearing the armor. Once this special action is used, it can't be used again until the next dawn." },
-            new Item { Name = "Boomerang Shield", ImageURL = "img/boomerangShield.jpeg", Description = "You can make a ranged weapon attack with this magic shield. It has a normal range of 20 feet and a long range of 60 feet, and it uses your Strength or Dexterity for the attack roll (your choice). If you’re proficient with shields, you are proficient with attacks made using this shield. On a hit, it deals 1d6 slashing damage. If you throw the shield, it reappears in your hand the instant after it hits or misses a target." },
-            new Item { Name = "Stone of Gravity Detection", ImageURL = "img/stoneOfGravityDetection.jpeg", Description = "This powerful magic item allows you to measure the most primal force on the material plane. Once per dawn you may say the command word and drop the stone from your hand. The stone will tell you if there is gravity." },
-            new Item { Name = "Dragon Scale Armor", ImageURL = "img/dragonScaleArmor.jpeg", Description = "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to one damage type that is determined by the kind of a dragon that provided the scales (see the table). Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest dragon of the type of armor within 30 miles of you. This special action can't be used again until the next dawn." },
-            new Item { Name = "Potion of Animal Friendship", ImageURL = "img/potionOfAnimalFriendship.jpeg", Description = "When you drink this potion, you can cast the animal friendship spell (save DC 13) for 1 hour at will. Agitating this muddy liquid brings little bits into view: a fish scale, a hummingbird tongue, a cat claw, or a squirrel hair." },
-            new Item { Name = "Potion of Speed", ImageURL = "img/potionOfSpeed.jpeg", Description = "When you drink this potion, you gain the effect of the haste spell for 1 minute (no concentration required). The potion’s yellow fluid is streaked with black and swirls on its own." },
-            new Item { Name = "Ring of Invisibility", ImageURL = "img/ringOfInvisibility.jpeg", Description = "While wearing this ring, you can turn invisible as an action. Anything you are wearing or carrying is invisible with you. You remain invisible until the ring is removed, until you attack or cast a spell, or until you use a bonus action to become visible again." },
-            new Item { Name = "Ring of Water Walking", ImageURL = "img/ringOfWaterwalking.jpeg", Description = "While wearing this ring, you can stand on and move across any liquid surface as if it were solid ground." },
-            new Item { Name = "Spell Scroll of Feeblemind", ImageURL = "img/spellScroll.jpeg", Description = "You blast the mind of a creature that you can see within range, attempting to shatter its intellect and personality. The target takes 4d6 psychic damage and must make an Intelligence saving throw. On a failed save, the creature's Intelligence and Charisma scores become 1. The creature can't cast spells, activate magic items, understand language, or communicate in any intelligible way. The creature can, however, identify its friends, follow them, and even protect them." },
-            new Item { Name = "Spell Scroll of Power Word Kill", ImageURL = "img/spellScroll.jpeg", Description = "You utter a word of power that can compel one creature you can see within range to die instantly. If the creature you chose has 100 hit points or fewer, it dies. Otherwise, the spell has no effect." },
-            new Item { Name = "Eldritch Staff", ImageURL = "img/eldritchStaff.jpeg", Description = "The staff has 10 charges and regains 1d6 + 4 expended charges daily at dawn. If you expend the last charge, roll a d20. On a 1, the staff is destroyed in an otherwise harmless burst of eldritch energy. Eldritch Attack. When you hit with a melee attack using the staff, you can expend up to 3 of its charges. For each charge you expend, the target takes an extra 1d8 lightning damage. Eldritch Escape. If you take damage while holding the staff, you can use your reaction to expend 3 of the staff's charges, whereupon you turn invisible and teleport yourself, along with any equipment you are wearing or carrying, up to 60 feet to an unoccupied space that you can see. You remain invisible until the start of your next turn or until you attack, cast a spell, or deal damage." },
-            new Item { Name = "Staff of Flowers", ImageURL = "img/staffOfFlowers.jpeg", Description = "This wooden staff has 10 charges. While holding it, you can use an action to expend 1 charge from the staff and cause a flower to sprout from a patch of earth or soil within 5 feet of you, or from the staff itself. Unless you choose a specific kind of flower, the staff creates a mild-scented daisy. The flower is harmless and nonmagical, and it grows or withers as a normal flower would." },
-            new Item { Name = "Holy Avenger", ImageURL = "img/holyAvenger.jpeg", Description = "You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you hit a fiend or an undead with it, that creature takes an extra 2d10 radiant damage. While you hold the drawn sword, it creates an aura in a 10-foot radius around you. You and all creatures friendly to you in the aura have advantage on saving throws against spells and other magical effects. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet." },
-            new Item { Name = "Moonblade", ImageURL = "img/moonblade.jpeg", Description = "A moonblade has one rune on its blade for each master it has served (typically 1d6 + 1). The first rune always grants a +1 bonus to attack and damage rolls made with this magic weapon. Each rune beyond the first grants the moonblade an additional property. The DM chooses each property or determines it randomly on the Moonblade Properties table. Sentience. A moonblade is a sentient neutral good weapon with an Intelligence of 12, a Wisdom of 10, and a Charisma of 12. It has hearing and darkvision out to a range of 120 feet. Personality. Every moonblade seeks the advancement of elvenkind and elven ideals. Courage, loyalty, beauty, music, and life are all part of this purpose. The weapon is bonded to the family line it is meant to serve. Once it has bonded with an owner who shares its ideals, its loyalty is absolute. If a moonblade has a flaw, it is overconfidence. Once it has decided on an owner, it believes that only that person should wield it, even if the owner falls short of elven ideals." },
-            new Item { Name = "Spear of Backbiting", ImageURL = "img/spearOfBackbiting.jpeg", Description = "You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back to your hand immediately. Curse. This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with Remove Curse or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one. Whenever you roll a 1 on an attack roll using this weapon, the weapon bends or flies to hit you in the back. Make a new attack roll with advantage against your own AC. If the result is a hit, you take damage as if you had attacked yourself with the spear." },
-            new Item { Name = "Sun Blade", ImageURL = "img/sunBlade.jpeg", Description = "This item appears to be a longsword hilt. While grasping the hilt, you can use a bonus action to cause a blade of pure radiance to spring into existence, or make the blade disappear. While the blade exists, this magic longsword has the finesse property. If you are proficient with shortswords or longswords, you are proficient with the sun blade. You gain a +2 bonus to attack and damage rolls made with this weapon, which deals radiant damage instead of slashing damage. When you hit an undead with it, that target takes an extra 1d8 radiant damage. The sword's luminous blade emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. While the blade persists, you can use an action to expand or reduce its radius of bright and dim light by 5 feet each, to a maximum of 30 feet each or a minimum of 10 feet each." },
-            new Item { Name = "Monkey's Paw of Fortune", ImageURL = "img/monkeysPawOfFortune.jpeg", Description = "This mummified monkey's paw holds up three fingers, and functions as a Ring of Three Wishes. Curse: Each wish is interpreted in a way to bring as much misfortune to the user as possible. The Monkey's Paw will still follow the wording of the wish, so it can be thwarted with care." }
+            new Item { 
+                Name = "Cape of Billowing",
+                ImageURL = "img/cloakOfBillowing.jpeg", 
+                Description = "While wearing this cloak, you can use a bonus action to make it billow dramatically.",
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Common").Single()
+                },
+            new Item { 
+                Name = "Immovable Rod",
+                ImageURL = "img/immovableRod.jpeg",
+                Description = "This flat iron rod has a button on one end. You can use an action to press the button, which causes the rod to become magically fixed in place. Until you or another creature uses an action to push the button again, the rod doesn't move, even if it is defying gravity. The rod can hold up to 8,000 pounds of weight. More weight causes the rod to deactivate and fall. A creature can use an action to make a DC 30 Strength check, moving the fixed rod up to 10 feet on a success.",
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Alchemy Jug", 
+                ImageURL = "img/alchemyJug.jpeg", 
+                Description = "You can use an action and name one liquid from the table below to cause the jug to produce the chosen liquid. Afterward, you can uncork the jug as an action and pour that liquid out, up to 2 gallons per minute. The maximum amount of liquid the jug can produce depends on the liquid you named." ,
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Hat of Disguise", 
+                ImageURL = "img/hatOfDisguise.jpeg", 
+                Description = "While wearing this hat, you can cast the Disguise Self spell. The spell ends if the hat is removed." ,
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Robe of Useful Items", 
+                ImageURL = "img/robeOfUsefulItems.jpeg", 
+                Description = "This robe has cloth patches of various shapes and colors covering it. While wearing the robe. you can use an action to detach one of the patches, causing it to become the object or creature it represents. Once the last patch is removed, the robe becomes an ordinary garment." ,
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Boots of Elvenkind", 
+                ImageURL = "img/bootsOfElvenkind.jpeg", 
+                Description = "While you wear these boots, your steps make no sound, regardless of the surface you are moving across. You also have advantage on Dexterity (Stealth) checks that rely on moving silently.",
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Amulet of Health", 
+                ImageURL = "img/amuletOfHealth.jpeg", 
+                Description = "Your Constitution score is 19 while you wear this amulet. It has no effect on you if your Constitution score is already 19 or higher.",
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Rare").Single()
+                },
+            new Item { 
+                Name = "Belt of Dwarvenkind", 
+                ImageURL = "img/beltOfDwarvenkind.jpeg", 
+                Description = "Your Constitution score increases by 2, to a maximum of 20. You have advantage on Charisma (Persuasion) checks made to interact with dwarves.In addition, while attuned to the belt, you have a 50 percent chance each day at dawn of growing a full beard if you're capable of growing one, or a visibly thicker beard if you already have one. If you aren't a dwarf, you gain the following additional benefits while wearing the belt: You have advantage on saving throws against poison, and you have resistance against poison damage. You have darkvision out to a range of 60 feet. You can speak, read, and write Dwarvish." ,
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Rare").Single()
+                },
+            new Item { 
+                Name = "Vorpal Sword", 
+                ImageURL = "img/vorpalSword.jpeg", 
+                Description = "You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage. When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra 6d8 slashing damage from the hit." ,
+                Type = context.Types.Where(m => m.Name == "Weapon").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Eye and Hand of Vecna", 
+                ImageURL = "img/eyeAndHandOfVecna.jpeg", 
+                Description = "To attune to the eye, you must gouge out your own eye and press the artifact into the empty socket. The eye grafts itself to your head and remains there until you die. Once in place, the eye transforms into a golden eye with a slit for a pupil, much like that of a cat. If the eye is ever removed, you die. To attune to the hand, you must lop off your left hand at the wrist and the press the artifact against the stump. The hand grafts itself to your arm and becomes a functioning appendage. If the hand is ever removed, you die. You gain a lot of cool and evil powers that are far too long to list here." ,
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Artifact").Single()
+                },
+            new Item { 
+                Name = "Ring of Spell Storing", 
+                ImageURL = "img/ringOfSpellStoring.jpeg", 
+                Description = "You can store a spell in a ring.", 
+                Type = context.Types.Where(m => m.Name == "Ring").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Rare").Single()
+                },
+            new Item { 
+                Name = "Bottle of Boundless Coffee", 
+                ImageURL = "img/bottleOfBoundlessCoffee.jpeg", 
+                Description = "This metal bottle carries delicious, warm coffee. The bottle comes with a stopper, which is attached to the bottle by a little chain. Even when open, the bottle won't accept any liquid other than the coffee it produces. The coffee inside is always comfortably warm, and none of the heat can be felt through the bottle. Each time you drink the coffee, roll a d20. On a 1, the bottle refuses to dispense coffee for the next hour. If you pour coffee from the bottle, rather than drinking from it, the coffee vanishes the moment it leaves the bottle.", 
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Common").Single()
+                },
+            new Item { 
+                Name = "Portable Hole", 
+                ImageURL = "img/portableHole.jpeg", 
+                Description = "This fine black cloth, soft as silk, is folded up to the dimensions of a handkerchief. It unfolds into a circular sheet 6 feet in diameter. You can use an action to unfold a portable hole and place it on or against a solid surface, whereupon the portable hole creates an extradimensional hole 10 feet deep. The cylindrical space within the hole exists on a different plane, so it can't be used to create open passages. Any creature inside an open portable hole can exit the hole by climbing out of it.", 
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Rare").Single()
+                },
+            new Item { 
+                Name = "Bag of Holding", 
+                ImageURL = "img/bagOfHolding.jpeg", 
+                Description = "This bag has an interior space considerably larger than its outside dimensions, roughly 2 feet in diameter at the mouth and 4 feet deep. The bag can hold up to 500 pounds, not exceeding a volume of 64 cubic feet. The bag weighs 15 pounds, regardless of its contents. Retrieving an item from the bag requires an action.", 
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Staff of Power", 
+                ImageURL = "img/staffOfPower.jpeg", 
+                Description = "This staff has 20 charges and can be wielded as a magic Quarterstaff that grants a +2 bonus to attack rolls and damage rolls made with it. While holding it, you gain a +2 bonus to Armor Class, saving throws, and spell attack rolls. While holding the staff , you can cast one of the spells on the following table from it, using your spell save DC. The table indicates how many charges you must expend to cast the spell. Cone of Cold, Fireball, Globe of Invulnerability, Hold Monster, Levitate, Lightning Bolt, Magic Missile, Ray of Enfeeblement, Wall of Force.", 
+                Type = context.Types.Where(m => m.Name == "Staff").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Very Rare").Single()
+                },
+            new Item { 
+                Name = "Sovereign Glue", 
+                ImageURL = "img/sovereignGlue.jpeg", 
+                Description = "This viscous, milky-white substance can form a permanent adhesive bond between any two objects. It must be stored in a jar or flask that has been coated inside with oil of slipperiness. When found, a container contains 1d6 + 1 ounces. One ounce of the glue can cover a 1-foot square surface. The glue takes 1 minute to set. Once it has done so, the bond it creates can be broken only by the application of universal solvent or oil of etherealness, or with a wish spell.", 
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Cabal's Ruin", 
+                ImageURL = "img/cabalsRuin.jpeg", 
+                Description = "This cloak is made of heavy dark cloth trimmed with golden patterns, and occasionally shimmers with sparks of arcane energy. It was once worn by the famed gunslinger Percival Fredrickstein von Musel Klossowski de Rolo III of Whitestone. You gain the following benefits: You have advantage on saving throws against spells and other magical effects while wearing this cloak. The cloak has 6 charges and it regains 1d4 + 2 expended charges daily at dawn. When you use the cloak to absorb a spell, you gain resistance to one type of damage dealt by the spell (your choice). This resistance then lasts until the end of your next turn." ,
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Artifact").Single()
+                },
+            new Item { 
+                Name = "Titanstone Knuckles", 
+                ImageURL = "img/titanstoneKnuckles.jpeg", 
+                Description = "Carved from the heartstone of a slain earth primordial, these gauntlets bestow immeasurable might to their wearer. In recent times, they were wielded by the legendary barbarian Grog Strongjaw, who continues to use them as he seeks worthy challengers across Tal’Dorei and Exandria. they gain the following properties: Your Strength score becomes 26. While you are under the effect of the Enlarge/Reduce spell cast by the gauntlets, you have resistance to cold, fire, lightning, and thunder damage.", 
+                Type = context.Types.Where(m => m.Name == "Weapon").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Artifact").Single()
+                },
+            new Item { 
+                Name = "Deck of Many Things", 
+                ImageURL = "img/deckOfManyThings.jpeg", 
+                Description = "Usually found in a box or pouch, this deck contains a number of cards made of ivory or vellum. Before you draw a card, you must declare how many cards you intend to draw and then draw them randomly (you can use an altered deck of playing cards to simulate the deck). Any cards drawn in excess of this number have no effect. Otherwise, as soon as you draw a card from the deck, its magic takes effect. You must draw each card no more than 1 hour after the previous draw. If you fail to draw the chosen number, the remaining number of cards fly from the deck on their own and take effect all at once. Once a card is drawn, it fades from existence. Unless the card is the Fool or the Jester, the card reappears in the deck, making it possible to draw the same card twice." ,
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Scroll of Tarrasque Summoning", 
+                ImageURL = "img/spellScroll.jpeg", 
+                Description = "Summons a Tarrasque.",
+                Type = context.Types.Where(m => m.Name == "Scroll").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Sphere of Annihilation", 
+                ImageURL = "img/sphereOfAnnihilation.jpeg", 
+                Description = "This 2-foot-diameter black sphere is a hole in the multiverse, hovering in space and stabilized by a magical field surrounding it. The sphere obliterates all matter it passes through and all matter that passes through it. Artifacts are the exception. Unless an artifact is susceptible to damage from a sphere of annihilation, it passes through the sphere unscathed. Anything else that touches the sphere but isn't wholly engulfed and obliterated by it takes 4d10 force damage.", 
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Potion of Healing", 
+                ImageURL = "img/potionOfHealing.jpeg", 
+                Description = "This potion is a magic item. As a Bonus Action, you can drink it or administer it to another creature within 5 feet of yourself. The creature that drinks the magical red fluid in this vial regains 2d4 + 2 Hit Points.", 
+                Type = context.Types.Where(m => m.Name == "Potion").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Common").Single()
+                },
+            new Item { 
+                Name = "Armor of Invulnerability", 
+                ImageURL = "img/armorOfInvulnerability.jpeg", 
+                Description = "You have resistance to nonmagical damage while you wear this armor. Additionally, you can use an action to make yourself immune to nonmagical damage for 10 minutes or until you are no longer wearing the armor. Once this special action is used, it can't be used again until the next dawn.", 
+                Type = context.Types.Where(m => m.Name == "Armor").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Boomerang Shield", 
+                ImageURL = "img/boomerangShield.jpeg", 
+                Description = "You can make a ranged weapon attack with this magic shield. It has a normal range of 20 feet and a long range of 60 feet, and it uses your Strength or Dexterity for the attack roll (your choice). If you’re proficient with shields, you are proficient with attacks made using this shield. On a hit, it deals 1d6 slashing damage. If you throw the shield, it reappears in your hand the instant after it hits or misses a target.", 
+                Type = context.Types.Where(m => m.Name == "Armor").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Stone of Gravity Detection", 
+                ImageURL = "img/stoneOfGravityDetection.jpeg", 
+                Description = "This powerful magic item allows you to measure the most primal force on the material plane. Once per dawn you may say the command word and drop the stone from your hand. The stone will tell you if there is gravity.", 
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Artifact").Single()
+                },
+            new Item { 
+                Name = "Dragon Scale Armor", 
+                ImageURL = "img/dragonScaleArmor.jpeg", 
+                Description = "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to one damage type that is determined by the kind of a dragon that provided the scales (see the table). Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest dragon of the type of armor within 30 miles of you. This special action can't be used again until the next dawn.", 
+                Type = context.Types.Where(m => m.Name == "Armor").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Very Rare").Single()
+                },
+            new Item { 
+                Name = "Potion of Animal Friendship", 
+                ImageURL = "img/potionOfAnimalFriendship.jpeg", 
+                Description = "When you drink this potion, you can cast the animal friendship spell (save DC 13) for 1 hour at will. Agitating this muddy liquid brings little bits into view: a fish scale, a hummingbird tongue, a cat claw, or a squirrel hair.", 
+                Type = context.Types.Where(m => m.Name == "Potion").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Potion of Speed", 
+                ImageURL = "img/potionOfSpeed.jpeg", 
+                Description = "When you drink this potion, you gain the effect of the haste spell for 1 minute (no concentration required). The potion’s yellow fluid is streaked with black and swirls on its own.", 
+                Type = context.Types.Where(m => m.Name == "Potion").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Very Rare").Single()
+                },
+            new Item { 
+                Name = "Ring of Invisibility", 
+                ImageURL = "img/ringOfInvisibility.jpeg", 
+                Description = "While wearing this ring, you can turn invisible as an action. Anything you are wearing or carrying is invisible with you. You remain invisible until the ring is removed, until you attack or cast a spell, or until you use a bonus action to become visible again.", 
+                Type = context.Types.Where(m => m.Name == "Ring").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Ring of Water Walking", 
+                ImageURL = "img/ringOfWaterwalking.jpeg", 
+                Description = "While wearing this ring, you can stand on and move across any liquid surface as if it were solid ground." ,
+                Type = context.Types.Where(m => m.Name == "Ring").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Uncommon").Single()
+                },
+            new Item { 
+                Name = "Spell Scroll of Feeblemind", 
+                ImageURL = "img/spellScroll.jpeg", 
+                Description = "You blast the mind of a creature that you can see within range, attempting to shatter its intellect and personality. The target takes 4d6 psychic damage and must make an Intelligence saving throw. On a failed save, the creature's Intelligence and Charisma scores become 1. The creature can't cast spells, activate magic items, understand language, or communicate in any intelligible way. The creature can, however, identify its friends, follow them, and even protect them.", 
+                Type = context.Types.Where(m => m.Name == "Scroll").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Very Rare").Single()
+                },
+            new Item { 
+                Name = "Spell Scroll of Power Word Kill", 
+                ImageURL = "img/spellScroll.jpeg", 
+                Description = "You utter a word of power that can compel one creature you can see within range to die instantly. If the creature you chose has 100 hit points or fewer, it dies. Otherwise, the spell has no effect.", 
+                Type = context.Types.Where(m => m.Name == "Scroll").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Eldritch Staff", 
+                ImageURL = "img/eldritchStaff.jpeg", 
+                Description = "The staff has 10 charges and regains 1d6 + 4 expended charges daily at dawn. If you expend the last charge, roll a d20. On a 1, the staff is destroyed in an otherwise harmless burst of eldritch energy. Eldritch Attack. When you hit with a melee attack using the staff, you can expend up to 3 of its charges. For each charge you expend, the target takes an extra 1d8 lightning damage. Eldritch Escape. If you take damage while holding the staff, you can use your reaction to expend 3 of the staff's charges, whereupon you turn invisible and teleport yourself, along with any equipment you are wearing or carrying, up to 60 feet to an unoccupied space that you can see. You remain invisible until the start of your next turn or until you attack, cast a spell, or deal damage." ,
+                Type = context.Types.Where(m => m.Name == "Staff").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Very Rare").Single()
+                },
+            new Item {
+                Name = "Staff of Flowers", 
+                ImageURL = "img/staffOfFlowers.jpeg", 
+                Description = "This wooden staff has 10 charges. While holding it, you can use an action to expend 1 charge from the staff and cause a flower to sprout from a patch of earth or soil within 5 feet of you, or from the staff itself. Unless you choose a specific kind of flower, the staff creates a mild-scented daisy. The flower is harmless and nonmagical, and it grows or withers as a normal flower would.", 
+                Type = context.Types.Where(m => m.Name == "Staff").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Common").Single()
+                },
+            new Item { 
+                Name = "Holy Avenger", 
+                ImageURL = "img/holyAvenger.jpeg", 
+                Description = "You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you hit a fiend or an undead with it, that creature takes an extra 2d10 radiant damage. While you hold the drawn sword, it creates an aura in a 10-foot radius around you. You and all creatures friendly to you in the aura have advantage on saving throws against spells and other magical effects. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet.", 
+                Type = context.Types.Where(m => m.Name == "Weapon").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Moonblade", 
+                ImageURL = "img/moonblade.jpeg", 
+                Description = "A moonblade has one rune on its blade for each master it has served (typically 1d6 + 1). The first rune always grants a +1 bonus to attack and damage rolls made with this magic weapon. Each rune beyond the first grants the moonblade an additional property. The DM chooses each property or determines it randomly on the Moonblade Properties table. Sentience. A moonblade is a sentient neutral good weapon with an Intelligence of 12, a Wisdom of 10, and a Charisma of 12. It has hearing and darkvision out to a range of 120 feet. Personality. Every moonblade seeks the advancement of elvenkind and elven ideals. Courage, loyalty, beauty, music, and life are all part of this purpose. The weapon is bonded to the family line it is meant to serve. Once it has bonded with an owner who shares its ideals, its loyalty is absolute. If a moonblade has a flaw, it is overconfidence. Once it has decided on an owner, it believes that only that person should wield it, even if the owner falls short of elven ideals." ,
+                Type = context.Types.Where(m => m.Name == "Weapon").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                },
+            new Item { 
+                Name = "Spear of Backbiting", 
+                ImageURL = "img/spearOfBackbiting.jpeg", 
+                Description = "You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back to your hand immediately. Curse. This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with Remove Curse or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one. Whenever you roll a 1 on an attack roll using this weapon, the weapon bends or flies to hit you in the back. Make a new attack roll with advantage against your own AC. If the result is a hit, you take damage as if you had attacked yourself with the spear." ,
+                Type = context.Types.Where(m => m.Name == "Weapon").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Very Rare").Single()
+                },
+            new Item { 
+                Name = "Sun Blade", 
+                ImageURL = "img/sunBlade.jpeg", 
+                Description = "This item appears to be a longsword hilt. While grasping the hilt, you can use a bonus action to cause a blade of pure radiance to spring into existence, or make the blade disappear. While the blade exists, this magic longsword has the finesse property. If you are proficient with shortswords or longswords, you are proficient with the sun blade. You gain a +2 bonus to attack and damage rolls made with this weapon, which deals radiant damage instead of slashing damage. When you hit an undead with it, that target takes an extra 1d8 radiant damage. The sword's luminous blade emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. While the blade persists, you can use an action to expand or reduce its radius of bright and dim light by 5 feet each, to a maximum of 30 feet each or a minimum of 10 feet each." ,
+                Type = context.Types.Where(m => m.Name == "Weapon").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Rare").Single()
+                },
+            new Item { 
+                Name = "Monkey's Paw of Fortune", 
+                ImageURL = "img/monkeysPawOfFortune.jpeg", 
+                Description = "This mummified monkey's paw holds up three fingers, and functions as a Ring of Three Wishes. Curse: Each wish is interpreted in a way to bring as much misfortune to the user as possible. The Monkey's Paw will still follow the wording of the wish, so it can be thwarted with care.", 
+                Type = context.Types.Where(m => m.Name == "Wonderous Item").Single(),
+                Rarity = context.Rarities.Where(m => m.Name == "Legendary").Single()
+                }
         );
 
         context.SaveChanges();
+
+        //Add a Type
+
 
 /*         // Add a movie review for inside out 2
         Review InsideOutReview = new Review {
