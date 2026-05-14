@@ -10,51 +10,35 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-@*                 @Html.DisplayNameFor(model => model.Item[0].ImageURL)
- *@            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item[0].Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item[0].Rarity)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
 @foreach (var item in Model.Item) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rarity.Name)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ItemID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ItemID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ItemID">Delete</a>
-            </td>
-        </tr>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-2" style="width:128px;height:128px;">
+                <img src="@Html.DisplayFor(modelItem => item.ImageURL)" class="img-fluid  h-100 border" object-fit: cover;>
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <div class ="row">
+                        <div class="col-md-7">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="card-text" class="text-body-secondary">@Html.DisplayFor(modelItem => item.Type.Name)</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="card-text" class="text-body-secondary">@Html.DisplayFor(modelItem => item.Rarity.Name)</p>
+                        </div>
+                        <div class="col-md-1">
+                            <p>
+                                <a asp-page="./Edit" asp-route-id="@item.ItemID">Edit</a>
+                                <a asp-page="./Details" asp-route-id="@item.ItemID">Details</a>
+                                <a asp-page="./Delete" asp-route-id="@item.ItemID">Delete</a>
+                            </p>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
 }
-    </tbody>
-</table>

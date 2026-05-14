@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CIDM_3315_Final_Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260510201440_InitialCreate")]
+    [Migration("20260514015457_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -95,7 +95,7 @@ namespace CIDM_3315_Final_Project.Migrations
                         .IsRequired();
 
                     b.HasOne("CIDM_3315_Final_Project.Models.Type", "Type")
-                        .WithMany("Item")
+                        .WithMany("Items")
                         .HasForeignKey("TypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -112,7 +112,7 @@ namespace CIDM_3315_Final_Project.Migrations
 
             modelBuilder.Entity("CIDM_3315_Final_Project.Models.Type", b =>
                 {
-                    b.Navigation("Item");
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

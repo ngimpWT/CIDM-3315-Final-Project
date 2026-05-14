@@ -1,0 +1,28 @@
+@page
+@model CIDM_3315_Final_Project.Pages.UpdateRarityModel
+
+@{
+    ViewData["Title"] = "Update Rarity";
+}
+<h1>Edit</h1>
+
+<h4>Movie Review</h4>
+<hr />
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Rarity.RarityID" />
+        <div class="form-group">
+            <label asp-for="Rarity.Name" class="control-label"></label>
+            <input asp-for="Rarity.Name" class="form-control" />
+            <span asp-validation-for="Rarity.Name" class="text-danger"></span>
+        </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,10 +1,59 @@
 ﻿@page
-@model IndexModel
+@model CIDM_3315_Final_Project.Pages.IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Index</h1>
+
+<p>
+    <a asp-page="AddRarity">Create New</a>
+</p>
+<table class="table border-primary">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rarity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rarity[0].Items)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rarity[0].Items[0].Type)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+@foreach (var r in Model.Rarity) {
+        
+        <tr>
+            <td class="table-secondary">
+                <strong>@Html.DisplayFor(modelItem => r.Name) </strong>@* Rarity Name *@
+            </td>
+            <td class="table-secondary"></td>
+            <td class="table-secondary"></td>
+            <td class="table-secondary">
+                <a asp-page="./UpdateRarity" asp-route-id="@r.RarityID">Edit</a> |
+                <a asp-page="./DeleteRarity" asp-route-id="@r.RarityID">Delete</a>
+            </td>
+            
+                @foreach(var i in r.Items)
+                {   
+                        <tr>
+                            <td></td>
+                            <td>
+                                <p>@Html.DisplayFor(modelItem => i.Name)</p> @* Item Name *@
+                            </td>
+                            <td>
+                                <p>@Html.DisplayFor(modelItem => i.Type.Name)</p> @* Item Type *@
+                            </td>
+                            <td></td>
+                        </tr>
+                }
+            
+        </tr>
+}
+    </tbody>
+</table>

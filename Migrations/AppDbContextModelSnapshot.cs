@@ -92,7 +92,7 @@ namespace CIDM_3315_Final_Project.Migrations
                         .IsRequired();
 
                     b.HasOne("CIDM_3315_Final_Project.Models.Type", "Type")
-                        .WithMany("Item")
+                        .WithMany("Items")
                         .HasForeignKey("TypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -109,7 +109,7 @@ namespace CIDM_3315_Final_Project.Migrations
 
             modelBuilder.Entity("CIDM_3315_Final_Project.Models.Type", b =>
                 {
-                    b.Navigation("Item");
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
