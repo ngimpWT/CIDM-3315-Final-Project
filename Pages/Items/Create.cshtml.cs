@@ -28,7 +28,6 @@ namespace CIDM_3315_Final_Project.Pages.Items
         [BindProperty]
         public Item Item { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

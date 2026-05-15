@@ -11,7 +11,7 @@
 <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Rarity.RarityID" />
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 10px;">
             <label asp-for="Rarity.Name" class="control-label"></label>
             <input asp-for="Rarity.Name" class="form-control" />
             <span asp-validation-for="Rarity.Name" class="text-danger"></span>

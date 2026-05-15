@@ -13,7 +13,6 @@ public static class SeedData
         {
             return;
         }
-        //Remember to seed and SAVE Rarity and Type first
 
         context.Types.AddRange(
             new Type {Name = "Wonderous Item"},

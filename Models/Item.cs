@@ -11,8 +11,6 @@ public class Item
     public string Description {get; set;} = string.Empty;
     public string ImageURL {get; set;} = string.Empty;
 
-    //All of this was causing a problem when trying to seed the data
-
 
     public int TypeID {get; set;} //Foreign Key
     public Type? Type {get; set;} = default!; // Navigation Property to Type
